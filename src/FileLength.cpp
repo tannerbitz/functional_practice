@@ -9,7 +9,7 @@ auto count_lines(const std::string& filename) -> int
     return std::count(
         std::istreambuf_iterator<char>(in),
         std::istreambuf_iterator<char>(),
-        "\n");
+        '\n');
 }
 
 

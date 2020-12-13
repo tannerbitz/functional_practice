@@ -9,11 +9,11 @@ add_executable(${TARGET_NAME} src/main.cpp
                               src/FileLength.cpp
                               include/FileLength.h)
 
-# Conan imports
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS)
+set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH})
+set(CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR} ${CMAKE_PREFIX_PATH})
 
-target_include_directories(${TARGET_NAME} PRIVATE include)
-target_link_libraries(${TARGET_NAME} PRIVATE CONAN_PKG::range-v3)
+find_package(range-v3 0.10.0 EXACT REQUIRED)
+
+target_include_directories(${TARGET_NAME} PUBLIC include)
+target_link_libraries(${TARGET_NAME} PUBLIC range-v3::range-v3)
 target_compile_features(${TARGET_NAME} PUBLIC cxx_std_17)
-target_compile_options(${TARGET_NAME} PRIVATE ${opts})

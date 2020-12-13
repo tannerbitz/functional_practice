@@ -1,6 +1,5 @@
 [requires]
 range-v3/0.10.0
-boost/1.74.0
 
 [generators]
-cmake
+cmake_find_package
